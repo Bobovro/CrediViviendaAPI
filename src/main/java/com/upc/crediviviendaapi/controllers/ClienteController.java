@@ -2,6 +2,7 @@ package com.upc.crediviviendaapi.controllers;
 
 import com.upc.crediviviendaapi.dtos.ClienteDTO;
 import com.upc.crediviviendaapi.interfaces.IClienteService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class ClienteController {
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ClienteDTO crear(@RequestBody ClienteDTO dto) {
+    public ClienteDTO crear(@Valid @RequestBody ClienteDTO dto) {
         return service.crear(dto);
     }
 
